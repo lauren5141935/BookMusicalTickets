@@ -38,3 +38,7 @@
 - 예매한 뮤지컬을 취소 할 수 있다.
 - 예매한 내역을 결제할 수 있다. ( 아임포트 웹 결제 시스템 API 활용)
 - 예매 과정에서 에러가 발생하면 결제에 대한 모든 정보를 없앨 수 있도록 설정
+
+
+# ERD
+![BookingMusicalTicket](https://github.com/user-attachments/assets/f640256b-847a-4c1e-a279-3b4c27041691)
