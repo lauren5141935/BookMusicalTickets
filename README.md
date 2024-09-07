@@ -34,11 +34,12 @@
 - 뮤지컬 스케쥴 등록 – 뮤지컬제목,극장, 상영시각
 
 [예매 및 결제]
-- 뮤지컬을 예매할 수 있다. ( 뮤지컬, 극장, 시간, 좌석 등을 선택한다.)
+- 뮤지컬을 예매할 수 있다. (뮤지컬, 극장, 시간, 좌석 등을 선택한다.)
 - 예매한 뮤지컬을 취소 할 수 있다.
-- 예매한 내역을 결제할 수 있다. ( 아임포트 웹 결제 시스템 API 활용)
+- 예매한 내역을 결제할 수 있다. (아임포트 웹 결제 시스템 API 활용)
 - 예매 과정에서 에러가 발생하면 결제에 대한 모든 정보를 없앨 수 있도록 설정
 
 
 # ERD
-![BookingMusicalTicket](https://github.com/user-attachments/assets/14f5b9da-4bb5-4fe9-85e0-be5865050a9d)
+![BookingMusicalTicket](https://github.com/user-attachments/assets/558f12bd-8847-4617-9461-6af7799ad7c3)
+
