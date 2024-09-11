@@ -1,0 +1,17 @@
+### 변경사항
+
+**AS-IS**
+entity 추가
+  • baseTImeEntity
+  • Booking Entity
+  • Musical Entity
+  • Payment Entity
+  • Scehdule Entity 
+  • Seat Entity 
+  • Theater Entity 
+  • User Entity 
+**TO-BE**
+
+### 테스트
+- [ ] 테스트 코드
+- [ ] API 테스트 
