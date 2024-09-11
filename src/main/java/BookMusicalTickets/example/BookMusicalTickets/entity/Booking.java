@@ -60,6 +60,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
     @CreatedDate
     private LocalDateTime createdAt;
 
-    private LocalDateTime updatedAt;
+    private LocalDateTime lastModifiedTime;
 
   }

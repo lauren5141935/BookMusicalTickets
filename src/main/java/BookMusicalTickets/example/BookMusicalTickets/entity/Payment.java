@@ -30,4 +30,3 @@ import lombok.Setter;
     private Integer shutdown;
 
   }
-}
