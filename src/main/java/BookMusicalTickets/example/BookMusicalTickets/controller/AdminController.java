@@ -1,13 +1,25 @@
 package BookMusicalTickets.example.BookMusicalTickets.controller;
 
+import BookMusicalTickets.example.BookMusicalTickets.dto.user.AdminDTO;
+import BookMusicalTickets.example.BookMusicalTickets.dto.user.AdminDTOPassword;
+import BookMusicalTickets.example.BookMusicalTickets.dto.user.LoginDTO;
+import BookMusicalTickets.example.BookMusicalTickets.security.JwtToken;
+import BookMusicalTickets.example.BookMusicalTickets.service.AdminService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.apache.catalina.security.SecurityUtil;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
   @RestController
@@ -21,7 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
     private final PasswordEncoder passwordEncoder;
 
     @PostMapping(value = "/signup")
-    public ResponseEntity<String> adminSignup(@Valid @RequestBody AdminInfoDTO signupDTO) {
+    public ResponseEntity<String> adminSignup(@Valid @RequestBody AdminDTO signupDTO) {
       log.info("admin signup request: " + signupDTO);
       signupDTO.setPassword(passwordEncoder.encode(signupDTO.getPassword()));
       adminService.signup(signupDTO);
@@ -49,14 +61,14 @@ import org.springframework.web.bind.annotation.RestController;
     }
 
     @GetMapping("/detail")
-    public AdminInfoDTOExcludePassword getAdminInfo() {
+    public AdminDTOPassword getAdminInfo() {
       log.info("admin get info");
       String loginId = SecurityUtil.getCurrentUsername();
       return adminService.getAdminDetail(loginId);
     }
 
     @PostMapping(value = "/modify")
-    public ResponseEntity<AdminInfoDTO> adminModify(@Valid @RequestBody AdminInfoDTO modifyDTO) {
+    public ResponseEntity<AdminDTO> adminModify(@Valid @RequestBody AdminDTO modifyDTO) {
       log.info("admin modify request : " + modifyDTO);
       if(!(modifyDTO.getPassword() == null || modifyDTO.getPassword() == "")) {
         modifyDTO.setPassword(passwordEncoder.encode(modifyDTO.getPassword()));
@@ -65,7 +77,7 @@ import org.springframework.web.bind.annotation.RestController;
         modifyDTO.setPassword(null);
       }
       log.info(modifyDTO);
-      AdminInfoDTO dto = adminService.updateAdminData(modifyDTO, SecurityUtil.getCurrentUsername());
+      AdminDTO dto = adminService.updateAdminData(modifyDTO, SecurityUtil.getCurrentUsername());
 
       return new ResponseEntity<>(dto, HttpStatus.OK);
     }

@@ -1,5 +1,7 @@
 package BookMusicalTickets.example.BookMusicalTickets.controller;
 
+import BookMusicalTickets.example.BookMusicalTickets.exceptionHandler.DataNotExistsException;
+import BookMusicalTickets.example.BookMusicalTickets.service.FileService;
 import jakarta.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
@@ -66,7 +68,7 @@ import org.springframework.web.bind.annotation.RestController;
       org.springframework.core.io.Resource resource = new FileSystemResource(filePath);
 
       if (!fileService.hasImage(filePath) || !resource.exists()) {
-        throw new DataNotExistsException("존재하지 않는 프로필사진입니다.", "PROFILE IMAGE");
+        throw new DataNotExistsException("존재하지 않는 프로필 사진입니다.", "PROFILE IMAGE");
       }
 
       HttpHeaders headers = new HttpHeaders();
@@ -80,4 +82,3 @@ import org.springframework.web.bind.annotation.RestController;
       }
     }
   }
-}
